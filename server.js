@@ -14,20 +14,30 @@ app.get('/',function (req,res) {
     res.render('index');
 });
 
-//fonction pour convertir les nombres
+
 function convertir(nombre,base) {
     const converti=parseInt(nombre,base);
     if(isNaN(converti)){return 0;}
     return converti;
 }
 
+function convertirHexa(nombre){
+    let result=convertir(nombre,10).toString(16).toUpperCase();
+    return result;
+}
+
+function convertirDecimal(nombre){
+    let result=convertir(nombre,16);
+    return result;
+}
+
 app.post('/',function(req,res){
     if(req.body.btn==="decimal"){
-        let result=convertir(req.body.nombre,10).toString(16).toUpperCase();
+        let result=convertirHexa(req.body.nombre);
         res.render('index',{result});
 
     }else if(req.body.btn==="hexadecimal"){
-        let result=convertir(req.body.nombre,16);
+        let result=convertirDecimal(req.body.nombre);
         res.render('index',{result});
     }
 });
