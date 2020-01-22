@@ -21,7 +21,12 @@
         </div>
     </form>
 
-    <p><%= result%></p>
+    <%if(locals.result){%>
+        <p><%=result%>
+            <script src="http://numbersapi.com/<%=result%>/trivia?write&fragment"></script>
+         </p> 
+        
+   <%}%>
     </div>
 
 </body>
